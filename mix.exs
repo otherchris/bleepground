@@ -10,7 +10,10 @@ defmodule Bleepground.MixProject do
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        "test.watch": :test
+      ]
     ]
   end
 
@@ -33,6 +36,7 @@ defmodule Bleepground.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test]},
       {:phoenix, "~> 1.6.11"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
